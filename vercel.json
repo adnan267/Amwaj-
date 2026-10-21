@@ -1,0 +1,20 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "installCommand": "npm install && npm --prefix server install && npm --prefix client install",
+  "buildCommand": "npm --prefix client run build && mv client/dist/index.html client/dist/_shell.html",
+  "outputDirectory": "client/dist",
+  "framework": null,
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "{client/dist/_shell.html,server/seed/extracted.json}",
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=31536000, immutable" }] },
+    { "source": "/media/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] }
+  ]
+}

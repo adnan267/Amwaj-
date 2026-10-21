@@ -1,0 +1,55 @@
+@import '@fontsource-variable/bricolage-grotesque';
+@import '@fontsource-variable/figtree';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { -webkit-text-size-adjust: 100%; scroll-padding-top: 88px; }
+  body { @apply bg-foam text-ink font-sans antialiased; font-size: 17px; line-height: 1.6; }
+  h1, h2, h3, h4 { @apply font-display text-ink; letter-spacing: -0.025em; line-height: 1.04; font-variation-settings: 'opsz' 96; }
+  ::selection { background: #00A3E0; color: #fff; }
+  :focus-visible { outline: 3px solid #00A3E0; outline-offset: 3px; border-radius: 6px; }
+  img, video { max-width: 100%; }
+}
+
+@layer components {
+  .wrap { @apply mx-auto w-full max-w-site px-4 sm:px-6 lg:px-8; }
+  .btn { @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 font-semibold transition duration-200 disabled:opacity-60 disabled:cursor-not-allowed; }
+  .btn-primary { @apply btn bg-cyan text-deep hover:bg-cyan-300; }
+  .btn-dark { @apply btn bg-navy text-white hover:bg-navy-600; }
+  .btn-ghost { @apply btn border border-white/40 text-white hover:bg-white hover:text-deep; }
+  .btn-line { @apply btn border border-navy/25 text-navy hover:border-navy hover:bg-navy hover:text-white; }
+  .h-xl { @apply font-display font-extrabold; font-size: clamp(2.6rem, 6.4vw, 5.6rem); }
+  .h-lg { @apply font-display font-bold; font-size: clamp(2rem, 4.2vw, 3.4rem); }
+  .h-md { @apply font-display font-bold; font-size: clamp(1.45rem, 2.4vw, 2rem); }
+  .lead { @apply text-mute; font-size: clamp(1.08rem, 1.5vw, 1.25rem); line-height: 1.6; max-width: 62ch; }
+  .prose-site p { @apply mb-4 text-mute; max-width: 68ch; }
+  .prose-site h2 { @apply mt-10 mb-3 text-2xl font-bold; }
+
+  /* Pool coping stone: the band where water meets the deck */
+  .coping {
+    height: 18px;
+    background:
+      repeating-linear-gradient(90deg, transparent 0 118px, rgba(120, 100, 70, 0.28) 118px 120px),
+      linear-gradient(180deg, #e6d9bf 0%, #d8c8a8 55%, #c4b08a 100%);
+    box-shadow: 0 -6px 18px rgba(6, 16, 51, 0.35);
+    position: relative;
+    z-index: 2;
+  }
+  /* Mosaic tile used for service tiles without a photo */
+  .mosaic {
+    background-color: #0a5c8f;
+    background-image:
+      linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px);
+    background-size: 14px 14px;
+  }
+  .input { @apply w-full rounded-xl border border-line bg-white px-4 py-3 text-ink placeholder:text-mute/70 outline-none transition focus:border-cyan focus:ring-4 focus:ring-cyan/15; }
+  .label { @apply mb-1.5 block text-sm font-semibold text-ink; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; scroll-behavior: auto !important; }
+}
